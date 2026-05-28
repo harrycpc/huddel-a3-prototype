@@ -20,35 +20,37 @@
   }
   .content { position: relative; z-index: 1; }
 
-  /* Inline supporter-action pill on pending goal cards.
-     Card itself is non-interactive (no goal-detail screen exists);
-     this button gives a clear, contextual entry to the supporter feed. */
+  /* Small text-link with arrow on pending goal cards.
+     Visually subordinate to the card content, but padding keeps tap area ≥44px. */
+  .card-action-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+    margin-right: -4px; /* visually align link's text edge with card's content edge */
+  }
   .card-action {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    min-height: 44px;
-    padding: 10px 16px;
-    margin-top: 16px;
-    background: rgba(236, 72, 153, 0.08);
-    border: 1px solid rgba(236, 72, 153, 0.32);
-    border-radius: 999px;
+    padding: 14px 4px; /* tap area: 13px text + 14×2 padding ≈ 45px ≥44pt */
     font-family: var(--heading);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     color: var(--accent-pop);
     text-decoration: none;
-    text-transform: uppercase;
     cursor: pointer;
-    transition: transform 200ms var(--spring), background 200ms ease, box-shadow 200ms ease;
+    transition: opacity 200ms ease;
   }
-  .card-action:hover {
-    background: rgba(236, 72, 153, 0.14);
-    box-shadow: 0 6px 14px rgba(236, 72, 153, 0.20);
+  .card-action:hover { opacity: 0.72; }
+  .card-action:hover .arrow { transform: translateX(3px); }
+  .card-action:active { opacity: 0.55; }
+  .card-action .arrow {
+    font-size: 15px;
+    line-height: 1;
+    display: inline-block;
+    transition: transform 200ms var(--spring);
   }
-  .card-action:active { transform: scale(0.96); }
-  .card-action .arrow { font-size: 14px; line-height: 1; }
 </style>
 </head>
 <body>
@@ -102,10 +104,11 @@
         <span style="font-family: var(--heading); font-weight: 700; font-size: 11px; color: var(--accent-pop); letter-spacing: 0.08em; text-transform: uppercase;">Waiting for Sarah K.</span>
       </div>
       <p style="font-size: 14px; color: var(--text-tertiary); line-height: 1.5;">Once Sarah accepts, you'll see her cheers here.</p>
-      <a class="card-action" href="screen-07.html" aria-label="View this goal's supporter activity">
-        View supporters
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
+      <div class="card-action-row">
+        <a class="card-action" href="screen-07.html" aria-label="View this goal's supporter activity">
+          View supporters <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
 
     <!-- Running goal card → milestone modal -->
