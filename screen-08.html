@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huddel Edu · Milestone reflection · Screen 08 (mobile)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-canvas:      #EFF6FF;
+    --bg-card:        rgba(255, 255, 255, 0.92);
+    --bg-card-solid:  #FFFFFF;
+    --bg-muted:       #F1F5FD;
+    --bg-status:      #1E293B;
+    --border-soft:    #E4ECFC;
+    --text-primary:   #1E293B;
+    --text-secondary: #475569;
+    --text-tertiary:  #94A3B8;
+    --accent-primary: #2563EB;
+    --accent-warm:    #F59E0B;
+    --accent-pop:     #EC4899;
+    --success:        #16A34A;
+    --gradient-cta:   linear-gradient(135deg, #4F8BFF 0%, #2563EB 100%);
+    --gradient-warm:  linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    --gradient-pop:   linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
+    --shadow-clay-card:   0 8px 16px rgba(37, 99, 235, 0.08), 0 24px 48px rgba(37, 99, 235, 0.06);
+    --shadow-clay-button: 0 6px 16px rgba(37, 99, 235, 0.28);
+    --heading: 'Nunito', system-ui, sans-serif;
+    --body:    'DM Sans', system-ui, sans-serif;
+    --mono:    'JetBrains Mono', monospace;
+    --spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+html, body {
+    background: #DBE7F7;
+    min-height: 100vh;
+    font-family: var(--body);
+    display: grid;
+    place-items: center;
+    padding: 40px 20px;
+}
+
+.viewport {
+    width: 390px;
+    height: 844px;
+    background: var(--bg-canvas);
+    border-radius: 44px;
+    overflow: hidden;
+    position: relative;
+    font-family: var(--body);
+    color: var(--text-primary);
+    box-shadow: 0 30px 80px rgba(30, 41, 59, 0.15);
+}
+
+/* --- status bar (iPhone 14 Pro · Dynamic Island) --- */
+.status-bar {
+    position: relative;
+    height: 44px;
+    background: transparent;
+    color: var(--text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 26px 0;
+    font-family: var(--heading);
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    z-index: 5;
+}
+.status-bar .dynamic-island {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 112px;
+    height: 30px;
+    background: #000;
+    border-radius: 999px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+    pointer-events: none;
+}
+.status-icons { display: flex; gap: 6px; align-items: center; color: var(--text-primary); }
+.status-icons svg { display: block; }
+
+/* =================================================================
+   UNDERLYING GOALS LIST (faint, at top)
+   ================================================================= */
+.under {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    height: 260px;
+    padding: 16px;
+    z-index: 1;
+}
+.under-bar {
+    text-align: center;
+    font-family: var(--heading);
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--text-primary);
+    padding: 16px 0 12px;
+}
+.under-card {
+    background: var(--bg-card-solid);
+    border-radius: 24px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.06);
+}
+.under-card.complete {
+    background: linear-gradient(135deg, rgba(22, 163, 74, 0.06), rgba(22, 163, 74, 0.02));
+    box-shadow: 0 8px 16px rgba(22, 163, 74, 0.10);
+}
+.under-card .icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: var(--bg-muted);
+    display: grid;
+    place-items: center;
+    color: var(--text-tertiary);
+}
+.under-card.complete .icon-wrap {
+    background: var(--success);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(22, 163, 74, 0.32);
+}
+.under-card .text {
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+.under-card.complete .text { color: var(--text-secondary); }
+.under-card .meta {
+    font-family: var(--heading);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    text-align: right;
+}
+.under-card.complete .meta { color: var(--success); }
+
+/* =================================================================
+   SCRIM
+   ================================================================= */
+.scrim {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 41, 59, 0.42);
+    backdrop-filter: blur(3px);
+    z-index: 2;
+    animation: scrimIn 220ms ease-out;
+}
+@keyframes scrimIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* =================================================================
+   MODAL SHEET (slides up)
+   ================================================================= */
+.modal {
+    position: absolute;
+    top: 180px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-card-solid);
+    border-radius: 28px 28px 0 0;
+    box-shadow: 0 -12px 32px rgba(30, 41, 59, 0.18);
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    animation: modalUp 380ms var(--spring) backwards;
+}
+@keyframes modalUp { from { transform: translateY(80px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.modal::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--text-tertiary);
+    opacity: 0.4;
+}
+
+/* sparkle accents around the modal */
+.sparkle {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: var(--gradient-pop);
+    border-radius: 8px;
+    opacity: 0.5;
+    z-index: 0;
+}
+.sparkle.s1 { top: 40px; left: 30px; transform: rotate(15deg); }
+.sparkle.s2 { top: 80px; right: 24px; transform: rotate(-12deg); width: 16px; height: 16px; background: var(--gradient-warm); }
+.sparkle.s3 { top: 16px; right: 80px; transform: rotate(8deg); width: 10px; height: 10px; }
+
+/* modal app-bar */
+.modal-bar {
+    height: 56px;
+    display: grid;
+    grid-template-columns: 56px 1fr 56px;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 12px 8px 0;
+    position: relative;
+    z-index: 2;
+}
+.modal-bar .title {
+    text-align: center;
+    font-family: var(--heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.modal-bar .close {
+    width: 44px;
+    height: 44px;
+    margin-right: 4px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    background: var(--bg-muted);
+    cursor: pointer;
+    justify-self: end;
+}
+
+/* modal body */
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 16px 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.celebration {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gradient-pop);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: var(--heading);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.30);
+}
+.celebration svg { color: #fff; }
+
+.modal-body h2 {
+    font-family: var(--heading);
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-primary);
+    letter-spacing: -0.012em;
+    margin-bottom: 10px;
+}
+.modal-body h2 .emph {
+    background: var(--gradient-pop);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.preamble {
+    font-family: var(--body);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* field */
+.field { margin-bottom: 16px; }
+.field-label {
+    display: block;
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+.textarea-shell {
+    background: var(--bg-muted);
+    border: 2px solid var(--accent-primary);
+    box-shadow: inset 0 1px 4px rgba(37, 99, 235, 0.08);
+    border-radius: 18px;
+    padding: 14px 16px;
+    min-height: 108px;
+}
+.textarea-shell textarea {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    resize: none;
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-primary);
+    min-height: 76px;
+}
+.field-helper {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* original why card — clay with warm gradient left border */
+.original-why {
+    margin-top: 16px;
+    background: var(--bg-card-solid);
+    border-radius: 18px;
+    padding: 16px 16px 16px 20px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.06);
+    overflow: hidden;
+}
+.original-why::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 4px;
+    background: var(--gradient-warm);
+    border-radius: 0 4px 4px 0;
+}
+.original-why .lab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--heading);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 8px;
+}
+.original-why .lab svg { stroke: var(--accent-warm); }
+.original-why .text {
+    font-family: var(--body);
+    font-size: 14.5px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* sticky footer */
+.modal-foot {
+    padding: 14px 16px 24px;
+    background: var(--bg-card-solid);
+    flex-shrink: 0;
+    z-index: 2;
+    border-top: 1px solid var(--border-soft);
+}
+.foot-note {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
+    margin-bottom: 10px;
+}
+.btn {
+    width: 100%;
+    height: 56px;
+    border-radius: 18px;
+    border: 0;
+    font-family: var(--heading);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 200ms var(--spring);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.btn.primary {
+    background: var(--gradient-cta);
+    color: #fff;
+    box-shadow: var(--shadow-clay-button);
+}
+.btn.primary:active { transform: scale(0.95); }
+.btn-text {
+    width: 100%;
+    background: none;
+    border: 0;
+    color: var(--accent-primary);
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 0 6px;
+    cursor: pointer;
+}
+
+.page-label {
+    margin-top: 18px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #64748B;
+}
+/* --- floating "back to index" link --- */
+.to-index {
+    position: fixed;
+    top: 22px;
+    left: 22px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px 9px 12px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(30, 41, 59, 0.12);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: transform 200ms var(--spring), box-shadow 200ms ease, color 200ms ease;
+}
+.to-index:hover {
+    transform: translateY(-1px);
+    color: var(--accent-primary);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.18);
+}
+.to-index:active { transform: translateY(0) scale(0.97); }
+.to-index svg { display: block; }
+
+</style>
+</head>
+<body>
+
+<a class="to-index" href="index.html" aria-label="Back to all screens">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+  <span>All screens</span>
+</a>
+<div class="viewport">
+
+    <!-- status bar -->
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <span class="dynamic-island" aria-hidden="true"></span>
+      <span class="status-icons">
+        <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="0.6"/><rect x="4.5" y="5" width="3" height="6" rx="0.6"/><rect x="9" y="2.5" width="3" height="8.5" rx="0.6"/><rect x="13.5" y="0" width="3" height="11" rx="0.6"/></svg>
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4.5a8 8 0 0 1 11 0M5 7a4.5 4.5 0 0 1 6 0M8 9.5h.01"/></svg>
+        <svg width="27" height="12" viewBox="0 0 27 12" fill="none" aria-hidden="true"><rect x="0.6" y="0.6" width="22.8" height="10.8" rx="2.8" stroke="currentColor" stroke-width="1" stroke-opacity="0.55"/><rect x="24" y="3.6" width="1.8" height="4.8" rx="0.6" fill="currentColor" fill-opacity="0.55"/><rect x="2.4" y="2.4" width="17" height="7.2" rx="1.6" fill="currentColor"/></svg>
+      </span>
+    </div>
+
+    <!-- underlying goals list (faintly visible) -->
+    <div class="under" aria-hidden="true">
+        <div class="under-bar">Goals</div>
+        <div class="under-card complete">
+            <div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="text">AWS Solutions Architect — passed</div>
+            <div class="meta">Just now</div>
+        </div>
+        <div class="under-card">
+            <div class="icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+            <div class="text">Run a 10k under 50 min</div>
+            <div class="meta">3 / 8 wk</div>
+        </div>
+    </div>
+
+    <!-- scrim -->
+    <div class="scrim" aria-hidden="true"></div>
+
+    <!-- modal sheet -->
+    <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+
+        <span class="sparkle s1"></span>
+        <span class="sparkle s2"></span>
+        <span class="sparkle s3"></span>
+
+        <header class="modal-bar">
+            <div></div>
+            <div class="title" id="modalTitle">Milestone reached</div>
+            <a href="screen-05.html" class="close" aria-label="Dismiss" style="text-decoration: none;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+        </header>
+
+        <div class="modal-body">
+            <div class="celebration">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 22 12 17.5 5.79 22l2.39-8.15L2 9.36h7.61z"/></svg>
+                Just now · You finished a chapter
+            </div>
+            <h2>What did you <span class="emph">learn</span> from this milestone?</h2>
+            <p class="preamble">Thirty seconds. One thing you'd tell yourself at the start.</p>
+
+            <div class="field">
+                <label class="field-label" for="reflect">Your reflection</label>
+                <div class="textarea-shell">
+                    <textarea id="reflect" rows="4">Practice exams were the only thing that mattered. The course content was scaffolding I overestimated.</textarea>
+                </div>
+                <div class="field-helper">No wrong answers — just one honest one.</div>
+            </div>
+
+            <div class="original-why">
+                <span class="lab">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Your original why · 14 weeks ago
+                </span>
+                <div class="text">"The promotion conversation in March made me realise I'd been waiting. AWS Solutions Architect is the smallest thing I can do this year that proves I'm not waiting any more."</div>
+            </div>
+        </div>
+
+        <div class="modal-foot">
+            <a href="screen-09.html" class="btn-text" style="display: block; text-align: center; text-decoration: none;">Skip just this once</a>
+            <div class="foot-note">This reflection becomes a chapter in your Growth Story.</div>
+            <a href="screen-09.html" class="btn primary" style="text-decoration: none;">
+                Save and continue
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="page-label">— Screen 08 · Milestone reflection</div>
+
+</body>
+</html>

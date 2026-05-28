@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huddel · Interactive Prototype · Index</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  display: block;
+  padding: 60px 40px 80px;
+  background: linear-gradient(180deg, #EFF6FF 0%, #DBE7F7 100%);
+  min-height: 100vh;
+}
+.wrap { max-width: 1280px; margin: 0 auto; }
+.hero { margin-bottom: 48px; }
+.hero .kicker {
+  font-family: var(--heading); font-weight: 700; font-size: 12px;
+  color: var(--accent-pop); letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero h1 { font-family: var(--heading); font-size: 48px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 14px; }
+.hero p { font-family: var(--body); font-size: 18px; color: var(--text-secondary); max-width: 720px; line-height: 1.55; margin-bottom: 22px; }
+.hero .flow-key {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--bg-card); border-radius: 999px; padding: 10px 18px;
+  font-family: var(--mono); font-size: 13px; color: var(--text-primary);
+  box-shadow: var(--shadow-clay-card);
+}
+.flow-key .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gradient-cta); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+}
+.card-tile {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 22px 20px 24px;
+  box-shadow: var(--shadow-clay-card);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 200ms var(--spring), box-shadow 200ms;
+  display: flex; flex-direction: column;
+}
+.card-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(37, 99, 235, 0.08); }
+.card-tile .num {
+  font-family: var(--heading); font-weight: 800; font-size: 36px;
+  color: var(--accent-primary); letter-spacing: -0.02em; line-height: 1; margin-bottom: 10px;
+}
+.card-tile .name { font-family: var(--heading); font-weight: 700; font-size: 16px; color: var(--text-primary); line-height: 1.3; margin-bottom: 6px; }
+.card-tile .desc { font-family: var(--body); font-size: 13px; color: var(--text-secondary); line-height: 1.45; flex: 1; }
+.card-tile .star {
+  display: inline-block; background: var(--gradient-pop); color: #fff;
+  font-family: var(--heading); font-weight: 700; font-size: 10px;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 999px; margin-top: 14px; align-self: flex-start;
+  box-shadow: var(--shadow-clay-pop);
+}
+
+.section-title {
+  font-family: var(--heading); font-weight: 700; font-size: 13px;
+  color: var(--text-tertiary); letter-spacing: 0.12em; text-transform: uppercase;
+  margin: 56px 0 22px;
+}
+
+.flow-card {
+  background: var(--bg-card);
+  border-radius: 22px;
+  padding: 24px 26px;
+  box-shadow: var(--shadow-clay-card);
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.flow-card .badge {
+  width: 64px; height: 64px; border-radius: 18px;
+  display: grid; place-items: center;
+  font-family: var(--heading); font-weight: 800; font-size: 24px; color: #fff;
+}
+.flow-card .badge.a { background: var(--gradient-cta); box-shadow: var(--shadow-clay-button); }
+.flow-card .badge.b { background: var(--gradient-pop); box-shadow: var(--shadow-clay-pop); }
+.flow-card .badge.c { background: var(--gradient-warm); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.32); }
+.flow-card .text .name { font-family: var(--heading); font-weight: 700; font-size: 17px; color: var(--text-primary); margin-bottom: 4px; }
+.flow-card .text .desc { font-family: var(--body); font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.45; }
+.flow-card .text .chain { font-family: var(--mono); font-size: 12px; color: var(--text-tertiary); letter-spacing: 0.04em; }
+.flow-card .text .chain a { color: var(--accent-primary); text-decoration: none; font-weight: 500; }
+.flow-card .text .chain a:hover { text-decoration: underline; }
+
+.footer { margin-top: 56px; font-family: var(--body); font-size: 13px; color: var(--text-tertiary); text-align: center; }
+.footer code { background: var(--bg-card); padding: 4px 10px; border-radius: 6px; font-family: var(--mono); font-size: 12px; color: var(--text-primary); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">— Huddel · Personal Growth Reframe</div>
+    <h1>Interactive Prototype</h1>
+    <p>10 mobile screens at 390×844 covering the three core flows: goal creation, supporter invitation, and milestone reflection. Click any screen below to start, or follow a flow.</p>
+    <span class="flow-key"><span class="dot"></span> Tip — open any screen, then click around. The bottom tab bar lets you jump between Today / Goals / Story / You.</span>
+  </div>
+
+  <div class="section-title">— Quick flows</div>
+
+  <a href="screen-01.html" style="text-decoration: none; color: inherit;">
+    <div class="flow-card">
+      <div class="badge a">▶</div>
+      <div class="text">
+        <div class="name">Goal-creation flow</div>
+        <div class="desc">Start a new goal, capture the why, invite a supporter — the full onboarding.</div>
+        <div class="chain">Screen 01 → 02 → 03 → 04 → 05</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="screen-05.html" style="text-decoration: none; color: inherit;">
+    <div class="flow-card">
+      <div class="badge c">★</div>
+      <div class="text">
+        <div class="name">Completion flow (O5 anchor)</div>
+        <div class="desc">Tap the running goal to reach a milestone, reflect, then see it become a chapter in your Growth Story.</div>
+        <div class="chain">Screen 05 → 08 (modal) → 09</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="screen-06.html" style="text-decoration: none; color: inherit;">
+    <div class="flow-card">
+      <div class="badge b">♥</div>
+      <div class="text">
+        <div class="name">Supporter flow (no-account)</div>
+        <div class="desc">Sarah sees the invite in her own email app — no Huddel account needed. She cheers; you see it in Activity.</div>
+        <div class="chain">Screen 06 → 07 → 05</div>
+      </div>
+    </div>
+  </a>
+
+  <div class="section-title">— All screens</div>
+
+  <div class="grid">
+    <a href="screen-01.html" class="card-tile">
+      <div class="num">01</div>
+      <div class="name">Today</div>
+      <div class="desc">Tab-root · welcome + hero goal card</div>
+    </a>
+    <a href="screen-02.html" class="card-tile">
+      <div class="num">02</div>
+      <div class="name">Goal title</div>
+      <div class="desc">New goal flow · step 1 of 4</div>
+    </a>
+    <a href="screen-03.html" class="card-tile">
+      <div class="num">03</div>
+      <div class="name">Why-capture</div>
+      <div class="desc">New goal flow · step 2 of 4 — the why moment</div>
+      <span class="star">★ Objective 5</span>
+    </a>
+    <a href="screen-04.html" class="card-tile">
+      <div class="num">04</div>
+      <div class="name">Supporter invite</div>
+      <div class="desc">New goal flow · step 3 of 4</div>
+    </a>
+    <a href="screen-05.html" class="card-tile">
+      <div class="num">05</div>
+      <div class="name">Goals</div>
+      <div class="desc">Tab-root · NEW goal card with pending-supporter pill</div>
+      <span class="star">★ Objective 2</span>
+    </a>
+    <a href="screen-06.html" class="card-tile">
+      <div class="num">06</div>
+      <div class="name">Supporter's inbox</div>
+      <div class="desc">Sarah's email app — no Huddel account needed</div>
+      <span class="star">★ Objective 2</span>
+    </a>
+    <a href="screen-07.html" class="card-tile">
+      <div class="num">07</div>
+      <div class="name">Activity feed</div>
+      <div class="desc">Your study circle — cheers and notes from supporters</div>
+    </a>
+    <a href="screen-08.html" class="card-tile">
+      <div class="num">08</div>
+      <div class="name">Milestone reflection</div>
+      <div class="desc">Full-screen modal · 30-second pause to capture what you learned</div>
+      <span class="star">★ Objective 5</span>
+    </a>
+    <a href="screen-09.html" class="card-tile">
+      <div class="num">09</div>
+      <div class="name">Growth Story</div>
+      <div class="desc">Tab-root · vertical timeline of completed chapters with whys</div>
+      <span class="star">★ Objective 5</span>
+    </a>
+    <a href="screen-10.html" class="card-tile">
+      <div class="num">10</div>
+      <div class="name">You</div>
+      <div class="desc">Tab-root · profile + "Today's why" reminder + menu</div>
+      <span class="star">★ Objective 5</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    
+  </div>
+
+</div>
+
+</body>
+</html>

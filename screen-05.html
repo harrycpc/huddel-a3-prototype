@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huddel · Goals · Screen 05</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .viewport::before {
+    content: ""; position: absolute; top: 200px; left: -90px;
+    width: 220px; height: 220px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 114, 182, 0.16) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .viewport::after {
+    content: ""; position: absolute; top: 500px; right: -100px;
+    width: 240px; height: 240px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.18) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .content { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+
+<a class="to-index" href="index.html" aria-label="Back to all screens">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+  <span>All screens</span>
+</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F8BFF"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="viewport">
+
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <span class="dynamic-island" aria-hidden="true"></span>
+    <span class="status-icons">
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="0.6"/><rect x="4.5" y="5" width="3" height="6" rx="0.6"/><rect x="9" y="2.5" width="3" height="8.5" rx="0.6"/><rect x="13.5" y="0" width="3" height="11" rx="0.6"/></svg>
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M2.5 4.5a8 8 0 0 1 11 0M5 7a4.5 4.5 0 0 1 6 0M8 9.5h.01"/></svg>
+      <svg width="27" height="12" viewBox="0 0 27 12" fill="none" aria-hidden="true"><rect x="0.6" y="0.6" width="22.8" height="10.8" rx="2.8" stroke="currentColor" stroke-width="1" stroke-opacity="0.55"/><rect x="24" y="3.6" width="1.8" height="4.8" rx="0.6" fill="currentColor" fill-opacity="0.55"/><rect x="2.4" y="2.4" width="17" height="7.2" rx="1.6" fill="currentColor"/></svg>
+    </span>
+  </div>
+
+  <header class="app-bar">
+    <div class="left"></div>
+    <div class="title">Goals</div>
+    <div class="right"><div class="avatar">A</div></div>
+  </header>
+
+  <div class="content">
+    <div class="fade-up" style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px;">
+      <h1>In progress</h1>
+      <span style="font-size: 14px; color: var(--text-secondary); font-weight: 500;">3 goals</span>
+    </div>
+
+    <!-- NEW goal card -->
+    <a href="screen-07.html" class="card tappable fade-up d1">
+      <div class="chap-head">
+        <span class="chap-num">Chapter 02 · Starting now</span>
+        <span class="status-pill new">New</span>
+      </div>
+      <h3 style="margin-bottom: 14px;">Pass the AWS Solutions Architect.</h3>
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(236, 72, 153, 0.10); border: 1.5px solid rgba(236, 72, 153, 0.40); padding: 6px 12px; border-radius: 999px; margin-bottom: 12px;">
+        <span style="color: var(--accent-pop); font-size: 12px;">◐</span>
+        <span style="font-family: var(--heading); font-weight: 700; font-size: 11px; color: var(--accent-pop); letter-spacing: 0.08em; text-transform: uppercase;">Waiting for Sarah K.</span>
+      </div>
+      <p style="font-size: 14px; color: var(--text-tertiary); line-height: 1.5;">Once Sarah accepts, you'll see her cheers here.</p>
+    </a>
+
+    <!-- Running goal card → milestone modal -->
+    <a href="screen-08.html" class="card tappable fade-up d2">
+      <div class="chap-head">
+        <span class="chap-num">Chapter 03 · Feb 2026</span>
+        <span class="status-pill in-progress">In progress</span>
+      </div>
+      <h3 style="margin-bottom: 14px;">Run a 10k under 50 minutes.</h3>
+      <div class="progress-row" style="margin-bottom: 0;">
+        <div class="progress-ring">
+          <svg viewBox="0 0 60 60">
+            <circle class="track" cx="30" cy="30" r="26" fill="none" stroke-width="5"/>
+            <circle class="arc" cx="30" cy="30" r="26" fill="none" stroke-width="5"
+              stroke-dasharray="163.36" stroke-dashoffset="44.11"/>
+          </svg>
+          <div class="pct">73%</div>
+        </div>
+        <div class="meta"><strong>3 of 4 milestones</strong><br>through the planned arc</div>
+      </div>
+    </a>
+
+    <!-- Reading goal -->
+    <div class="card fade-up d3" style="margin-bottom: 0;">
+      <div class="chap-head" style="margin-bottom: 12px;">
+        <span class="chap-num">Chapter 04 · Ongoing</span>
+      </div>
+      <h3 style="margin-bottom: 16px;">Read an Iain M. Banks novel.</h3>
+      <div class="tags">
+        <span class="tag anchor">★ Objective 5</span>
+        <span class="tag">learning</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM TAB BAR -->
+  <div class="tab-bar-wrap">
+    <nav class="tab-bar">
+      <a href="screen-01.html" class="tab">
+        <div class="icon-pill"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></div>
+        <span class="label">Today</span>
+      </a>
+      <a href="screen-05.html" class="tab active">
+        <div class="icon-pill"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <span class="label">Goals</span>
+      </a>
+      <a href="screen-09.html" class="tab">
+        <div class="icon-pill"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <span class="label">Story</span>
+      </a>
+      <a href="screen-10.html" class="tab">
+        <div class="icon-pill"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <span class="label">You</span>
+      </a>
+    </nav>
+  </div>
+
+</div>
+
+<div class="page-label">— Screen 05 · Goals</div>
+
+</body>
+</html>
