@@ -35,13 +35,18 @@
 
 html, body {
     background: #DBE7F7;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    min-height: 100vh;
     font-family: var(--body);
     display: grid;
     place-items: center;
     padding: 40px 20px;
+}
+/* Screen pages only — lock to viewport so the browser window doesn't scroll.
+   Targets pages that contain a .viewport device frame; the index has no .viewport. */
+html:has(.viewport), body:has(.viewport) {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 a { text-decoration: none; color: inherit; cursor: pointer; }
