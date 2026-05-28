@@ -19,6 +19,36 @@
     pointer-events: none; z-index: 0;
   }
   .content { position: relative; z-index: 1; }
+
+  /* Inline supporter-action pill on pending goal cards.
+     Card itself is non-interactive (no goal-detail screen exists);
+     this button gives a clear, contextual entry to the supporter feed. */
+  .card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 10px 16px;
+    margin-top: 16px;
+    background: rgba(236, 72, 153, 0.08);
+    border: 1px solid rgba(236, 72, 153, 0.32);
+    border-radius: 999px;
+    font-family: var(--heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--accent-pop);
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 200ms var(--spring), background 200ms ease, box-shadow 200ms ease;
+  }
+  .card-action:hover {
+    background: rgba(236, 72, 153, 0.14);
+    box-shadow: 0 6px 14px rgba(236, 72, 153, 0.20);
+  }
+  .card-action:active { transform: scale(0.96); }
+  .card-action .arrow { font-size: 14px; line-height: 1; }
 </style>
 </head>
 <body>
@@ -60,8 +90,8 @@
       <span style="font-size: 14px; color: var(--text-secondary); font-weight: 500;">3 goals</span>
     </div>
 
-    <!-- NEW goal card -->
-    <a href="screen-07.html" class="card tappable fade-up d1">
+    <!-- NEW goal card · non-interactive container (no goal-detail screen in this prototype) -->
+    <div class="card fade-up d1">
       <div class="chap-head">
         <span class="chap-num">Chapter 02 · Starting now</span>
         <span class="status-pill new">New</span>
@@ -72,7 +102,11 @@
         <span style="font-family: var(--heading); font-weight: 700; font-size: 11px; color: var(--accent-pop); letter-spacing: 0.08em; text-transform: uppercase;">Waiting for Sarah K.</span>
       </div>
       <p style="font-size: 14px; color: var(--text-tertiary); line-height: 1.5;">Once Sarah accepts, you'll see her cheers here.</p>
-    </a>
+      <a class="card-action" href="screen-07.html" aria-label="View this goal's supporter activity">
+        View supporters
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
 
     <!-- Running goal card → milestone modal -->
     <a href="screen-08.html" class="card tappable fade-up d2">
